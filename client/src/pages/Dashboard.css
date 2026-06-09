@@ -1,5 +1,147 @@
-.dash-content { height: auto; min-height: 400px; }
-.dash-content li#option { height: 220px; }
-@media screen and (min-width: 1140px) { .dash-content { height: 1400px; } }
-@media screen and (min-width: 1248px) { .dash-content { height: 1000px; } }
-@media screen and (min-width: 1920px) { .dash-content { height: 1500px; } }
+/* ── Dashboard Page Styles ── */
+
+/* Dashboard Header Section */
+.dash-header-section {
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+  padding: var(--space-8) 0;
+}
+
+.dash-welcome-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.dash-welcome-text h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.dash-welcome-text p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-width: 700px;
+}
+
+.dash-welcome-actions {
+  width: 100%;
+}
+
+.dash-welcome-actions .btn {
+  max-width: 100%;
+  width: auto;
+  min-width: 200px;
+}
+
+/* Dashboard Services Section */
+.dash-services-section {
+  background-color: var(--bg-secondary);
+  padding: var(--space-10) 0;
+  flex-grow: 1;
+}
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+/* Dashboard Card Styles */
+.dash-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dash-card:hover {
+  border-color: var(--text-muted);
+  box-shadow: var(--shadow-md);
+}
+
+.dash-card-icon {
+  width: 40px;
+  height: 40px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-3);
+}
+
+.dash-card-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.dash-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.dash-card p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: var(--space-3);
+}
+
+.dash-card-footer {
+  border-top: 1px solid var(--border-color);
+  padding-top: var(--space-2);
+  margin-top: auto;
+}
+
+.dash-card-btn {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ── Responsive breakpoints ── */
+@media screen and (min-width: 768px) {
+  .dash-welcome-card {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-8);
+  }
+  
+  .dash-welcome-actions {
+    width: auto;
+    flex-shrink: 0;
+  }
+  
+  .dash-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .dash-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .dash-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

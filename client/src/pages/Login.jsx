@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import './Auth.css';
 
 const Login = () => {
@@ -15,12 +16,26 @@ const Login = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    setMsg('');
+
+    // Client-side validations
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(form.email)) {
+      setMsg('Please enter a valid email address.');
+      return;
+    }
+
+    if (form.password.length < 6) {
+      setMsg('Password must be at least 6 characters long.');
+      return;
+    }
+
     setLoading(true);
     try {
       await login(form.email, form.password);
       navigate('/dashboard');
     } catch (err) {
-      setMsg(err.response?.data?.message || 'Login failed. Please try again.');
+      setMsg(err.response?.data?.message || 'Login failed. Please verify your credentials.');
     } finally {
       setLoading(false);
     }
@@ -30,38 +45,57 @@ const Login = () => {
     <>
       <title>Login – Indfes Smartdoors</title>
       <Navbar />
-      <div className="logsection">
-        <div id="left">
-          <img src="/loginhere.png" alt="Login" style={{ width: '90%', height: '90%', marginLeft: '5%', marginTop: '3%' }} />
-        </div>
-        <div id="right">
-          <div className="formarea">
+      <div className="page-body">
+        <div className="auth-page-wrapper">
+          <div className="auth-card">
+            <div className="auth-card-header">
+              <h2>Sign in to your account</h2>
+              <p>Enter your registered credentials to access your dashboard.</p>
+            </div>
+            
             {msg && <div className="msg_item">{msg}</div>}
-            <h4>Login</h4>
-            <form onSubmit={handleSubmit}>
-              <input
-                id="user" type="email" name="email"
-                placeholder="Email" required
-                value={form.email} onChange={handleChange}
-              />
-              <input
-                id="check" type="password" name="password"
-                placeholder="Password" required
-                value={form.password} onChange={handleChange}
-              />
-              <center>
-                <button id="logbut" type="submit" disabled={loading}>
-                  {loading ? 'Logging in…' : 'Login'}
-                </button>
-              </center>
+            
+            <form onSubmit={handleSubmit} className="auth-form" noValidate>
+              <div className="auth-field-group">
+                <label htmlFor="user">Email Address</label>
+                <input
+                  id="user" 
+                  type="email" 
+                  name="email"
+                  placeholder="email@example.com" 
+                  required
+                  value={form.email} 
+                  onChange={handleChange}
+                />
+              </div>
+              
+              <div className="auth-field-group">
+                <div className="label-row">
+                  <label htmlFor="check">Password</label>
+                  <Link to="/forgot" className="forgot-link">Forgot password?</Link>
+                </div>
+                <input
+                  id="check" 
+                  type="password" 
+                  name="password"
+                  placeholder="••••••••" 
+                  required
+                  value={form.password} 
+                  onChange={handleChange}
+                />
+              </div>
+
+              <button className="auth-btn" type="submit" disabled={loading}>
+                {loading ? 'Signing in…' : 'Sign In'}
+              </button>
             </form>
-            <center style={{ marginTop: '10px' }}>
-              <Link to="/signup" style={{ marginLeft: '15px' }}>New user? Sign Up</Link>
-              &nbsp;|&nbsp;
-              <Link to="/forgot">Forgot Password?</Link>
-            </center>
+            
+            <div className="auth-card-footer">
+              <p>New to Smartdoors? <Link to="/signup">Create an account</Link></p>
+            </div>
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );

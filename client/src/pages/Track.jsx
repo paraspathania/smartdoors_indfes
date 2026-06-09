@@ -27,21 +27,19 @@ const Track = () => {
     <>
       <title>Track Status – Indfes Smartdoors</title>
       <Navbar />
-      <div className="logsection track-section">
-        <div id="left">
-          <div className="leftinfo">
-            <img src="/edistrict.svg" width="100%" height="100%" alt="Track" />
-          </div>
-        </div>
-        <div id="right">
+      <div className="page-body">
+        <div className="track-section">
           <div className="logarea">
             {error && <div className="msg_item">{error}</div>}
             <p id="Loginh">Track Application Status</p>
             <div className="fields">
               <form onSubmit={handleSubmit}>
                 <input
-                  type="text" placeholder="Application Reference Number (ARN)"
-                  value={arn} onChange={e => setArn(e.target.value)} required
+                  type="text" 
+                  placeholder="Application Reference Number (ARN)"
+                  value={arn} 
+                  onChange={e => setArn(e.target.value)} 
+                  required
                 />
                 <div className="log_button">
                   <button type="submit" disabled={loading}>{loading ? 'Tracking…' : 'Track'}</button>
@@ -58,8 +56,8 @@ const Track = () => {
             )}
           </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 };

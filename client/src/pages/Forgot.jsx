@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import API from '../api';
 import './Auth.css';
 
@@ -32,43 +33,69 @@ const Forgot = () => {
     <>
       <title>Forgot Password – Indfes Smartdoors</title>
       <Navbar />
-      <div className="loginarea">
-        <div className="logarea_left">
-          <img src="/forgot.svg" alt="Forgot Password" style={{ width: '100%', height: '80%', marginTop: '10%' }} />
-        </div>
-        <div className="logarea_right">
-          <div id="formarea">
+      <div className="page-body">
+        <div className="auth-page-wrapper">
+          <div className="auth-card">
+            <div className="auth-card-header">
+              <h2>Reset your password</h2>
+              <p>Enter your registered email and mobile number to assign a new password.</p>
+            </div>
+            
             {msg && <div className={success ? 'msg_success' : 'msg_item'}>{msg}</div>}
-            <center><h3>Forgot Password</h3></center>
+            
             {!success && (
-              <form onSubmit={handleSubmit}>
-                <input
-                  id="forms" type="email" name="email"
-                  placeholder="Registered Email" required
-                  value={form.email} onChange={handleChange}
-                /><br />
-                <input
-                  id="forms" type="text" name="mobile"
-                  placeholder="Registered Mobile" required
-                  value={form.mobile} onChange={handleChange}
-                /><br />
-                <input
-                  id="forms" type="password" name="newPassword"
-                  placeholder="New Password" required
-                  value={form.newPassword} onChange={handleChange}
-                /><br />
-                <center>
-                  <button type="submit" disabled={loading}>
-                    {loading ? 'Resetting…' : 'Reset'}
-                  </button>
-                </center>
+              <form onSubmit={handleSubmit} className="auth-form">
+                <div className="auth-field-group">
+                  <label htmlFor="email">Registered Email</label>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="email@example.com"
+                    required
+                    value={form.email}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="auth-field-group">
+                  <label htmlFor="mobile">Registered Mobile</label>
+                  <input
+                    id="mobile"
+                    type="text"
+                    name="mobile"
+                    placeholder="10-digit mobile number"
+                    required
+                    value={form.mobile}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="auth-field-group">
+                  <label htmlFor="newPassword">New Password</label>
+                  <input
+                    id="newPassword"
+                    type="password"
+                    name="newPassword"
+                    placeholder="Minimum 6 characters"
+                    required
+                    value={form.newPassword}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <button className="auth-btn" type="submit" disabled={loading}>
+                  {loading ? 'Resetting password…' : 'Reset Password'}
+                </button>
               </form>
             )}
-            <center style={{ marginTop: '15px' }}>
-              <Link to="/login">Back to Login</Link>
-            </center>
+            
+            <div className="auth-card-footer">
+              <p><Link to="/login">&larr; Back to sign in</Link></p>
+            </div>
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );

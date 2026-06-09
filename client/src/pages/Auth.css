@@ -1,92 +1,175 @@
-/* Auth pages shared CSS — ported from login.php and signup.php */
-.logsection {
-  background-color: #d9d9d9; margin-top: 73px;
-  width: 100%; height: 582px;
-}
-.logsection #right { height: 580px; width: 50%; background-color: #d9d9d9; float: right; }
-.logsection #left  { height: 580px; width: 50%; background-color: #d9d9d9; float: left; }
+/* ── Redesigned Auth Pages Styling (Centered Card Layout) ── */
 
-.formarea {
-  margin-left: 25%; margin-top: 10%;
-  border-radius: 10px; height: 70%; width: 50%;
-  background-color: lightskyblue;
+.auth-page-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 112px); /* 100vh minus navbar heights */
+  background-color: var(--bg-secondary);
+  padding: var(--space-12) var(--space-4);
+  width: 100%;
 }
-.formarea h4 { text-align: center; margin-top: 25px; padding-top: 50px; font-size: 24px; }
-input#user {
-  border: none; width: 75%; height: 40px;
-  margin-left: 10%; margin-top: 10%;
-  border-radius: 7px; padding-left: 20px;
-}
-input#check {
-  border: none; width: 75%; height: 40px;
-  margin-left: 10%; margin-top: 6%;
-  border-radius: 7px; padding-left: 20px; display: block;
-}
-button#logbut {
-  border-radius: 3px; background-color: orange; color: black;
-  border: none; padding: 6px 20px; margin-top: 20px; cursor: pointer;
-}
-button#logbut:hover { background-color: blue; color: white; }
 
-/* Signup form area */
-.loginarea { margin-top: 73px; height: 500px; width: 100%; background-color: #d9d9d9; }
-.logarea_right { float: left; width: 48%; height: 100%; margin-left: 2%; background-color: #d9d9d9; }
-.logarea_left  { float: left; width: 48%; height: 100%; background-color: #d9d9d9; }
-#formarea {
-  margin: auto; margin-top: 3%;
-  border-radius: 10px; height: 90%; width: 50%;
-  background-color: lightskyblue;
+/* Auth Card layout */
+.auth-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-10) var(--space-8);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  max-width: 440px;
 }
-#formarea h3 { font-size: 26px; padding-top: 30px; padding-bottom: 10px; }
-input#forms {
-  border: none; width: 70%; height: 50px;
-  border-radius: 5px; margin-top: 5px;
-  margin-left: 15%; padding-left: 15px; display: block;
-}
-#formarea button {
-  width: 90px; height: 40px; border: none;
-  border-radius: 5px; background-color: orange; margin-top: 30px; cursor: pointer;
-}
-#formarea button:hover { background-color: blue; color: white; }
-#formarea a { margin-left: 15px; margin-top: 10px; text-decoration: none; }
 
-.msg_item { text-align: center; background-color: red; font-size: 18px; color: white; padding: 5px; }
+.auth-card-header {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
 
-/* Responsive */
-@media screen and (max-width: 767px) {
-  .logsection #left { display: none; }
-  .logsection #right { margin-top: 40px; width: 100%; }
-  .formarea { margin-left: 10%; margin-right: 10%; width: 80%; }
-  .logarea_left { display: none; }
-  .logarea_right { width: 97%; height: 500px; }
-  #formarea { width: 98%; }
-  .loginarea { height: 550px; margin-top: 107px; }
+.auth-card-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  margin-bottom: var(--space-2);
 }
-@media screen and (min-width: 768px) {
-  .logsection #left { display: initial; margin-top: 40px; width: 40%; }
-  .logsection #right { margin-top: 40px; width: 60%; }
-  .formarea { margin-left: 10%; margin-right: 10%; width: 80%; }
-  .loginarea { height: 400px; margin-top: 107px; }
-  .logarea_left { display: initial; }
-  .logarea_right { width: 50%; background-color: lightskyblue; }
-  #formarea { width: 90%; }
+
+.auth-card-header p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
 }
-@media screen and (min-width: 1024px) {
-  .logsection #left { margin-top: 40px; width: 50%; }
-  .logsection #right { margin-top: 40px; width: 50%; }
-  .formarea { margin-left: 30%; margin-right: 20%; width: 40%; }
-  .loginarea { height: 500px; margin-top: 107px; padding-top: 50px; }
-  .logarea_right { width: 50%; background-color: #d9d9d9; }
-  #formarea { width: 65%; }
+
+/* Fields & Labels */
+.auth-field-group {
+  margin-bottom: var(--space-4);
+  display: flex;
+  flex-direction: column;
 }
-@media screen and (min-width: 1440px) {
-  .logsection { margin-top: 100px; height: 650px; }
-  .formarea { margin-top: 10px; margin-left: 32%; width: 48%; }
-  .loginarea { margin-top: 112px; height: 500px; }
-  #formarea { width: 50%; }
+
+.auth-field-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+  text-align: left;
 }
-@media screen and (min-width: 1920px) {
-  .logsection { margin-top: 100px; height: 800px; }
-  .loginarea { height: 700px; margin-top: 166px; }
-  #formarea { width: 50%; }
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forgot-link {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* Form Inputs */
+.auth-form input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0 var(--space-3);
+  font-size: 14px;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  display: block;
+}
+
+.auth-form input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* Action button */
+.auth-btn {
+  width: 100%;
+  height: 42px;
+  border: none;
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: var(--space-4);
+  transition: background-color 0.15s ease;
+}
+
+.auth-btn:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.auth-btn:disabled {
+  background-color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+/* Success / Error Banners */
+.msg_item {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+.msg_success {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+/* Auth Card footer */
+.auth-card-footer {
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.auth-card-footer a {
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.auth-card-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Alignment for mobile view */
+@media screen and (max-width: 768px) {
+  .auth-page-wrapper {
+    padding: var(--space-6) var(--space-4);
+    min-height: calc(100vh - 64px - 56px); /* adjust for mobile nav header/footer height */
+  }
+  
+  .auth-card {
+    padding: var(--space-6) var(--space-4);
+  }
 }

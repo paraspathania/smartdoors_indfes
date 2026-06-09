@@ -15,15 +15,16 @@ const Navbar = () => {
     <>
       {/* ── Top Bar ─────────────────────────────────────────── */}
       <div className="topbar">
-        <center><h3>Indfes Smartdoors</h3></center>
-        <p id="top">You Think We Prepare</p>
+        <div className="topbar-brand" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+          <h3>Indfes Smartdoors</h3>
+          <p>You Think We Prepare</p>
+        </div>
         {user && (
           <span className="welcomeinfo">
             <b>Welcome: </b>{user.name}
           </span>
         )}
       </div>
-      <div className="topbarbottom"></div>
 
       {/* ── Mobile Nav ───────────────────────────────────────── */}
       <div className="mobilenav">

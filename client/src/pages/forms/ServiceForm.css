@@ -1,37 +1,199 @@
-/* Shared service form styles — matches PHP form pages */
-.form-page { margin-top: 73px; min-height: 100vh; background-color: #d9d9d9; padding-bottom: 40px; }
-.form-container {
-  max-width: 700px; margin: 40px auto;
-  background-color: lightskyblue; border-radius: 10px;
-  padding: 30px 40px;
+/* ── Redesigned Service Forms CSS (Service Forms & Support Pages) ── */
+
+.form-page, .service-form-page {
+  background-color: var(--bg-secondary);
+  padding: calc(112px + var(--space-6)) 0 var(--space-10) 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-.form-container h2 { font-size: 24px; margin-bottom: 20px; text-align: center; }
-.form-container label { font-size: 14px; font-weight: bold; display: block; margin-top: 15px; margin-bottom: 4px; }
+
+.form-container, .service-form-container {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  max-width: 640px;
+  width: 100%;
+  margin: var(--space-6) auto;
+  padding: var(--space-8) var(--space-10);
+}
+
+.form-container h2, .service-form-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-6);
+  text-align: center;
+}
+
+.form-container label, .form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-1);
+}
+
+/* Inputs, Selects, Textareas */
 .form-container input,
 .form-container select,
-.form-container textarea {
-  width: 100%; height: 44px; border: none; border-radius: 7px;
-  padding-left: 15px; font-size: 15px; background-color: #fff;
+.form-container textarea,
+.service-form input,
+.service-form select,
+.service-form textarea {
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0 var(--space-3);
+  font-size: 14px;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  display: block;
 }
-.form-container textarea { height: 100px; padding-top: 10px; resize: vertical; }
-.form-container button {
-  margin-top: 25px; width: 120px; height: 44px;
-  border: none; border-radius: 5px;
-  background-color: orange; font-size: 16px; cursor: pointer;
+
+.form-container textarea, .service-form textarea {
+  height: 100px;
+  padding-top: var(--space-2);
+  resize: vertical;
 }
-.form-container button:hover { background-color: blue; color: white; }
-.msg_success { background-color: green;  color: white; padding: 8px; text-align: center; border-radius: 5px; margin-bottom: 15px; }
-.msg_error   { background-color: red;    color: white; padding: 8px; text-align: center; border-radius: 5px; margin-bottom: 15px; }
+
+.form-container input:focus,
+.form-container select:focus,
+.form-container textarea:focus,
+.service-form input:focus,
+.service-form select:focus,
+.service-form textarea:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* Buttons */
+.form-container button, .submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 var(--space-8);
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  margin-top: var(--space-6);
+  width: 100%;
+}
+
+.form-container button:hover, .submit-btn:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.form-container button:disabled, .submit-btn:disabled {
+  background-color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+/* Success / Error Boxes */
+.msg_success, .success-box {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+.msg_error, .error-box {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+/* ARN Box styling */
 .arn-box {
-  margin-top: 20px; background-color: #fff; border-radius: 8px;
-  padding: 20px; text-align: center;
+  margin-top: var(--space-4);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: center;
 }
-.arn-box h3 { color: green; font-size: 20px; }
-.arn-box p  { font-size: 16px; margin-top: 8px; }
-.arn-number { font-size: 24px; font-weight: bold; color: navy; letter-spacing: 2px; }
+
+.arn-box h3 {
+  color: var(--color-success);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+
+.arn-box p {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.arn-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+  margin: var(--space-2) 0;
+  font-family: monospace;
+}
+
+/* Spacing utility for custom forms */
+.form-group {
+  margin-bottom: var(--space-4);
+}
+
+/* Align on mobile view */
+@media screen and (max-width: 1139px) {
+  .form-page, .service-form-page {
+    padding-top: calc(64px + var(--space-4));
+    padding-bottom: calc(56px + var(--space-6));
+  }
+}
+
 @media screen and (max-width: 768px) {
-  .form-container { margin: 20px; padding: 20px; }
+  .form-container, .service-form-container {
+    margin: var(--space-4);
+    padding: var(--space-6) var(--space-4);
+  }
 }
-@media screen and (min-width: 1140px) {
-  .form-page { margin-top: 112px; }
+
+/* Fieldset and Legend styles for multi-section forms */
+.form-section {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  margin-bottom: var(--space-6);
+  background-color: var(--bg-secondary);
+}
+
+.form-section legend {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding: 0 var(--space-2);
+}
+
+.required {
+  color: var(--color-danger);
+  margin-left: 2px;
 }
