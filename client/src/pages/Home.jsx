@@ -7,43 +7,22 @@ import './Home.css';
 
 
 
-const HeroDiscoveryPanel = ({ user }) => (
+const HeroDiscoveryPanel = () => (
   <div className="hero-discovery-card">
     <div className="discovery-header">
       <h4>Find Your Service</h4>
     </div>
     
     <div className="discovery-body">
-      <div className="discovery-group">
-        <h5>Business Services</h5>
-        <div className="discovery-links">
-          <Link to={user ? '/forms/mca' : '/login'} className="discovery-item">&bull; Company Registration</Link>
-          <Link to={user ? '/forms/mca' : '/login'} className="discovery-item">&bull; LLP Registration</Link>
-          <Link to={user ? '/forms/msme' : '/login'} className="discovery-item">&bull; MSME Registration</Link>
-        </div>
-      </div>
-      
-      <div className="discovery-group">
-        <h5>Government Certificates</h5>
-        <div className="discovery-links">
-          <Link to={user ? '/forms/district' : '/login'} className="discovery-item">&bull; Income Certificate</Link>
-          <Link to={user ? '/forms/district' : '/login'} className="discovery-item">&bull; Domicile Certificate</Link>
-          <Link to={user ? '/forms/pension' : '/login'} className="discovery-item">&bull; Pension Services</Link>
-        </div>
-      </div>
-
-      <div className="discovery-group">
-        <h5>Documentation</h5>
-        <div className="discovery-links">
-          <Link to={user ? '/forms/student' : '/login'} className="discovery-item">&bull; Affidavits</Link>
-          <Link to={user ? '/forms/legal' : '/login'} className="discovery-item">&bull; Rent Agreements</Link>
-          <Link to={user ? '/forms/individual' : '/login'} className="discovery-item">&bull; PAN / Aadhaar Updates</Link>
-        </div>
-      </div>
+      <Link to="/services" className="discovery-category-link">&bull; Business Services</Link>
+      <Link to="/services" className="discovery-category-link">&bull; Government Certificates</Link>
+      <Link to="/services" className="discovery-category-link">&bull; Documentation Services</Link>
+      <Link to="/services" className="discovery-category-link">&bull; Student Services</Link>
+      <Link to="/services" className="discovery-category-link">&bull; Pension Services</Link>
     </div>
     
     <div className="discovery-footer">
-      <a href="#services" className="btn btn-primary widget-cta">Browse Services</a>
+      <Link to="/services" className="btn btn-primary widget-cta">Browse All Services</Link>
     </div>
   </div>
 );
@@ -199,120 +178,45 @@ const Home = () => {
           </div>
         </section>
 
-      {/* ── Redesigned Service Catalog Section ── */}
+      {/* ── Simplified Services Section (Homepage) ── */}
       <section id="services" className="services-section">
         <div className="container">
           <div className="section-header">
-            <h2>Our Core Services</h2>
-            <p>Select a category below to start your application with expert guidance.</p>
+            <h2>Our Services</h2>
+            <p>We simplify corporate registrations, legal agreements, and government certifications through a digital compliance workflow.</p>
           </div>
           
-          <div className="services-category-grid">
-            <div className="service-category-panel">
-              <div className="category-panel-header">
+          <div className="services-intro-grid">
+            <div className="services-intro-card">
+              <div className="services-intro-icon">
                 <i className="bx bx-briefcase-alt-2"></i>
-                <div>
-                  <h3>Business Services</h3>
-                  <p>Incorporate entities, secure licensing, and manage commercial taxes.</p>
-                </div>
               </div>
-              <ul className="category-service-list">
-                <li>
-                  <Link to={user ? '/forms/mca' : '/login'}>
-                    <span>Company Registration</span>
-                    <span className="service-meta">⏱ Estimated Processing Time: 3-7 Working Days</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to={user ? '/forms/msme' : '/login'}>
-                    <span>MSME &amp; Business Licensing</span>
-                    <span className="service-meta">⏱ Estimated Processing Time: 2-4 Working Days</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to={user ? '/forms/roc' : '/login'}>
-                    <span>ROC Compliance Filing</span>
-                    <span className="service-meta">⏱ Estimated Processing Time: 5-10 Working Days</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to={user ? '/forms/accounting' : '/login'}>
-                    <span>Accounting &amp; Tax (GST/ITR)</span>
-                    <span className="service-meta">⏱ Estimated Processing Time: 3-5 Working Days</span>
-                  </Link>
-                </li>
-              </ul>
+              <h3>Business &amp; MCA Services</h3>
+              <p>Start your business today. We handle Pvt Ltd registration, LLP incorporation, MSME licenses, ROC compliance, and tax filings.</p>
+              <Link to="/services" className="services-intro-link">Explore Business Services &rarr;</Link>
             </div>
 
-            <div className="service-category-panel">
-              <div className="category-panel-header">
+            <div className="services-intro-card">
+              <div className="services-intro-icon">
                 <i className="bx bx-building"></i>
-                <div>
-                  <h3>Government Services</h3>
-                  <p>Apply for verified state certificates, pensions, and public schemes.</p>
-                </div>
               </div>
-              <ul className="category-service-list">
-                <li>
-                  <Link to={user ? '/forms/district' : '/login'}>
-                    <span>E-District Certificates</span>
-                    <span className="service-meta">⏱ Estimated Processing Time: 7-15 Working Days</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to={user ? '/forms/pension' : '/login'}>
-                    <span>Pension Schemes (Old Age/Widow)</span>
-                    <span className="service-meta">⏱ Estimated Processing Time: 15-30 Working Days</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to={user ? '/forms/goi' : '/login'}>
-                    <span>GOI Government Services</span>
-                    <span className="service-meta">⏱ Estimated Processing Time: 10-20 Working Days</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to={user ? '/forms/agri' : '/login'}>
-                    <span>Agriculture &amp; Electricity Connection</span>
-                    <span className="service-meta">⏱ Estimated Processing Time: 15-25 Working Days</span>
-                  </Link>
-                </li>
-              </ul>
+              <h3>Government Certificates</h3>
+              <p>Request verified certificates. We facilitate application and document filing for Domicile, Income, Caste, and EWS certificates.</p>
+              <Link to="/services" className="services-intro-link">Explore Certificate Services &rarr;</Link>
             </div>
 
-            <div className="service-category-panel">
-              <div className="category-panel-header">
+            <div className="services-intro-card">
+              <div className="services-intro-icon">
                 <i className="bx bx-file"></i>
-                <div>
-                  <h3>Documentation Services</h3>
-                  <p>Draft legal agreements, support affidavits, and update credentials.</p>
-                </div>
               </div>
-              <ul className="category-service-list">
-                <li>
-                  <Link to={user ? '/forms/legal' : '/login'}>
-                    <span>Rent Agreements &amp; Power of Attorney</span>
-                    <span className="service-meta">⏱ Estimated Processing Time: 1-3 Working Days</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to={user ? '/forms/student' : '/login'}>
-                    <span>Student Affidavits &amp; GAP Certificates</span>
-                    <span className="service-meta">⏱ Estimated Processing Time: 1-3 Working Days</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to={user ? '/forms/individual' : '/login'}>
-                    <span>PAN &amp; Aadhaar (E-KYC Updates)</span>
-                    <span className="service-meta">⏱ Estimated Processing Time: 5-15 Working Days</span>
-                  </Link>
-                </li>
-              </ul>
+              <h3>Documentation &amp; Citizen</h3>
+              <p>Prepare legal document filings. Get expert drafting and safe processing for rent agreements, student affidavits, and PAN/Aadhaar updates.</p>
+              <Link to="/services" className="services-intro-link">Explore Document Services &rarr;</Link>
             </div>
           </div>
 
-          <div className="services-note">
-            <p><i className="bx bx-info-circle"></i> Estimated timelines may vary depending on document verification requirements and government processing times.</p>
+          <div className="services-intro-footer">
+            <Link to="/services" className="btn btn-primary">Browse All Services</Link>
           </div>
         </div>
       </section>

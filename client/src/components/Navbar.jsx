@@ -1,23 +1,25 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './Navbar.css';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
-  const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (err) {
+      console.error('Logout failed:', err);
+    }
   };
 
   return (
     <>
-      {/* ── Top Bar ─────────────────────────────────────────── */}
+      {/* ── Top branding and user identity bar ───────────────── */}
       <div className="topbar">
-        <div className="topbar-brand" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+        <div className="topbar-brand">
           <h3>Indfes Smartdoors</h3>
-          <p>You Think We Prepare</p>
+          <p>Digital Registration & Compliance Platform</p>
         </div>
         {user && (
           <span className="welcomeinfo">
@@ -26,11 +28,12 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* ── Mobile Nav ───────────────────────────────────────── */}
+      {/* ── Mobile Navigation Bar ──────────────────────────────── */}
       <div className="mobilenav">
         <ul type="none">
+          <li><Link to="/services"><i className='bx bx-grid-alt'></i> Browse</Link></li>
           <li><Link to="/"><i className='bx bx-home'></i> Home</Link></li>
-          <li><Link to={user ? '/dashboard' : '/login'}><i className='bx bx-cart-download'></i> Application</Link></li>
+          <li><Link to={user ? '/dashboard' : '/login'}><i className='bx bx-cart-download'></i> Apply</Link></li>
           <li><Link to={user ? '/track' : '/login'}><i className='bx bxs-downvote'></i> Track</Link></li>
           <li><Link to={user ? '/raise' : '/login'}><i className='bx bxs-help-circle'></i> Help</Link></li>
           {user
@@ -40,10 +43,9 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* ── Desktop Dropdown Menu ────────────────────────────── */}
+      {/* ── Desktop Category Navigation Menu ──────────────────── */}
       <div className="menubar">
         <div className="menub">
-
           <div className="dropdown classic">
             <button className="dropbtn">Start Business</button>
             <div className="dropdown-content">
@@ -113,16 +115,16 @@ const Navbar = () => {
               </ul>
             </div>
           </div>
-
         </div>
 
         <div className="menuc">
           <ul type="none">
+            <li><Link to="/services" className="nav-browse-cta">Browse All Services</Link></li>
             {user
-              ? <li onClick={handleLogout} style={{cursor:'pointer'}}><i className='bx bx-log-out'></i> Logout</li>
-              : <li><Link to="/login"><i className='bx bx-log-in'></i> Login</Link></li>
+              ? <li onClick={handleLogout} style={{cursor:'pointer', display: 'inline-flex', alignItems: 'center'}}><i className='bx bx-log-out'></i> Logout</li>
+              : <li><Link to="/login" style={{display: 'inline-flex', alignItems: 'center'}}><i className='bx bx-log-in'></i> Login</Link></li>
             }
-            <li><Link to="/"><i className='bx bxs-home'></i> Home</Link></li>
+            <li><Link to="/" style={{display: 'inline-flex', alignItems: 'center'}}><i className='bx bxs-home'></i> Home</Link></li>
           </ul>
         </div>
       </div>
