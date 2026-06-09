@@ -29,13 +29,13 @@ const Navbar = () => {
       {/* ── Mobile Nav ───────────────────────────────────────── */}
       <div className="mobilenav">
         <ul type="none">
-          <li><Link to="/"><i className='bx bx-home' style={{color:'#5c07fa'}}></i> Home</Link></li>
-          <li><Link to={user ? '/dashboard' : '/login'}><i className='bx bx-cart-download' style={{color:'#5c07fa'}}></i> Application</Link></li>
-          <li><Link to={user ? '/track' : '/login'}><i className='bx bxs-downvote' style={{color:'#5905f4'}}></i> Track</Link></li>
-          <li><Link to={user ? '/raise' : '/login'}><i className='bx bxs-help-circle' style={{color:'#7405f7'}}></i> Help</Link></li>
+          <li><Link to="/"><i className='bx bx-home'></i> Home</Link></li>
+          <li><Link to={user ? '/dashboard' : '/login'}><i className='bx bx-cart-download'></i> Application</Link></li>
+          <li><Link to={user ? '/track' : '/login'}><i className='bx bxs-downvote'></i> Track</Link></li>
+          <li><Link to={user ? '/raise' : '/login'}><i className='bx bxs-help-circle'></i> Help</Link></li>
           {user
-            ? <li onClick={handleLogout} style={{cursor:'pointer'}}><i className='bx bx-log-out' style={{color:'#6d07e7'}}></i> Logout</li>
-            : <li><Link to="/login"><i className='bx bx-log-in' style={{color:'#6d07e7'}}></i> Login</Link></li>
+            ? <li onClick={handleLogout} style={{cursor:'pointer'}}><i className='bx bx-log-out'></i> Logout</li>
+            : <li><Link to="/login"><i className='bx bx-log-in'></i> Login</Link></li>
           }
         </ul>
       </div>
@@ -119,10 +119,10 @@ const Navbar = () => {
         <div className="menuc">
           <ul type="none">
             {user
-              ? <li onClick={handleLogout} style={{cursor:'pointer'}}><i className='bx bx-log-out' style={{color:'#6d07e7'}}></i> Logout</li>
-              : <li><Link to="/login"><i className='bx bx-log-in' style={{color:'#6d07e7'}}></i> Login</Link></li>
+              ? <li onClick={handleLogout} style={{cursor:'pointer'}}><i className='bx bx-log-out'></i> Logout</li>
+              : <li><Link to="/login"><i className='bx bx-log-in'></i> Login</Link></li>
             }
-            <li><Link to="/"><i className='bx bxs-home' style={{color:'#6d07e7'}}></i> Home</Link></li>
+            <li><Link to="/"><i className='bx bxs-home'></i> Home</Link></li>
           </ul>
         </div>
       </div>

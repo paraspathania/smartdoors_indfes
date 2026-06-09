@@ -1,9 +1,9 @@
-/* ── Redesigned Footer CSS ── */
+/* ── Redesigned Dark Footer CSS ── */
 
 .site-footer {
-  background-color: var(--bg-secondary);
-  border-top: 1px solid var(--border-color);
-  padding: var(--space-12) 0 var(--space-6) 0;
+  background-color: #111827; /* Dark Slate Gray */
+  border-top: 1px solid #1f2937;
+  padding: var(--space-16) 0 var(--space-8) 0;
   width: 100%;
   margin-top: auto; /* Push footer to bottom if page content is short */
 }
@@ -15,18 +15,18 @@
 
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: var(--space-8);
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-12);
 }
 
 .footer-col h3 {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--text-primary);
+  color: #ffffff; /* White headers */
   margin-bottom: var(--space-4);
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
 .footer-col ul {
@@ -41,69 +41,92 @@
 
 .footer-col a {
   font-size: 13px;
-  color: var(--text-secondary);
+  color: #9ca3af; /* Muted gray links */
   transition: color 0.15s ease;
   display: inline-block;
 }
 
 .footer-col a:hover {
-  color: var(--text-primary);
+  color: #ffffff; /* White hover */
 }
 
-/* Company details special styling */
-.footer-company-info {
-  grid-column: span 2;
+/* Brand block details */
+.footer-brand-title {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  text-transform: none !important;
+  letter-spacing: -0.5px !important;
+  margin-bottom: var(--space-3) !important;
 }
 
-.footer-company-info h3 {
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: none;
-  letter-spacing: normal;
-  margin-bottom: var(--space-3);
-}
-
-.footer-company-info p {
+.footer-brand-desc {
   font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: var(--space-2);
+  color: #9ca3af;
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
 }
 
-.footer-company-info strong {
-  color: var(--text-primary);
+.footer-contact-info p {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: var(--space-1);
+}
+
+.footer-contact-info strong {
+  color: #e5e7eb;
+}
+
+/* Office Details */
+.office-company {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f3f4f6;
+  margin-bottom: var(--space-1);
+}
+
+.office-address {
+  font-size: 13px;
+  color: #9ca3af;
+  line-height: 1.6;
+}
+
+.office-info {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-top: var(--space-2);
 }
 
 /* Footer bottom copyright section */
 .footer-bottom {
-  border-top: 1px solid var(--border-color);
-  padding-top: var(--space-4);
+  border-top: 1px solid #1f2937;
+  padding-top: var(--space-6);
   text-align: center;
 }
 
 .footer-bottom p {
   font-size: 12px;
-  color: var(--text-muted);
+  color: #6b7280;
   margin: 0;
 }
 
 /* ── Responsive breakpoints ── */
 @media screen and (min-width: 768px) {
   .footer-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-8);
   }
-  
-  .footer-company-info {
-    grid-column: span 4;
+  .footer-office-col {
+    grid-column: span 2;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .footer-grid {
-    grid-template-columns: 1.2fr 1.2fr 1.2fr 1.2fr 2.2fr;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: var(--space-12);
   }
-  
-  .footer-company-info {
-    grid-column: span 1;
+  .footer-office-col {
+    grid-column: auto;
   }
 }

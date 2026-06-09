@@ -5,96 +5,48 @@ import Footer from '../components/Footer';
 import { useAuth } from '../context/AuthContext';
 import './Home.css';
 
-const services = [
-  {
-    img: '/mca.png',
-    title: 'MCA & Company Registration',
-    desc: 'Incorporate Private Limited, Public Limited, OPC, LLP, or Proprietorships, and manage registrations.',
-    items: ['Pvt Ltd & LLP Incorporation', 'One Person Company (OPC)', 'Proprietorship Setup'],
-    timeline: 'Timeline: 3-7 Working Days',
-    to: '/forms/mca'
-  },
-  {
-    img: '/rocs.png',
-    title: 'ROC Compliance & Filing',
-    desc: 'File annual returns and complete compliance filings for OPC, LLP, and PVT LTD companies.',
-    items: ['Annual Return Filings', 'ROC AMC Compliance', 'Director KYC Updates'],
-    timeline: 'Timeline: 5-10 Working Days',
-    to: '/forms/roc'
-  },
-  {
-    img: '/msme.png',
-    title: 'MSME & Business Licensing',
-    desc: 'Register business entities, obtain MSME/Udyam registrations, and apply for ISO/Trademark certifications.',
-    items: ['MSME / Udyam Registration', 'ISO Certification Support', 'Trademark & Copyright filings'],
-    timeline: 'Timeline: 2-4 Working Days',
-    to: '/forms/msme'
-  },
-  {
-    img: '/taxation.png',
-    title: 'Accounting & Taxation',
-    desc: 'File Income Tax Returns (ITR), upload monthly GST returns, and seek professional auditing assistance.',
-    items: ['GST Return Filing', 'Income Tax Return (ITR)', 'Statutory & Audit Support'],
-    timeline: 'Timeline: 3-5 Working Days',
-    to: '/forms/accounting'
-  },
-  {
-    img: '/edistrict.png',
-    title: 'E-District Certificates',
-    desc: 'Apply for state government certified Domicile, Income, Caste, Character, and EWS certificates.',
-    items: ['Domicile & Caste Certificates', 'Income & Character Certificates', 'EWS Certification'],
-    timeline: 'Timeline: 7-15 Working Days',
-    to: '/forms/district'
-  },
-  {
-    img: '/pension.png',
-    title: 'Pension Services',
-    desc: 'Apply for government pension schemes, including Old Age, Widow, and Physically Handicapped pensions.',
-    items: ['Old Age Pension Scheme', 'Widow Pension Scheme', 'Physically Handicapped Pension'],
-    timeline: 'Timeline: 15-30 Working Days',
-    to: '/forms/pension'
-  },
-  {
-    img: '/student.png',
-    title: 'Student Services & Affidavits',
-    desc: 'Draft affidavits for single girl child support, GAP certificate, income proof, address validation, or loans.',
-    items: ['GAP Certificates', 'Single Girl Child Affidavits', 'Income / Address Proof Affidavits'],
-    timeline: 'Timeline: 1-3 Working Days',
-    to: '/forms/student'
-  },
-  {
-    img: '/individual.png',
-    title: 'Individual & E-KYC Services',
-    desc: 'Apply for or update PAN cards, Aadhaar details, Voter IDs, Passports, and Driving Licenses.',
-    items: ['Aadhaar & PAN Updates', 'Passport & Driving License', 'Voter ID Card Services'],
-    timeline: 'Timeline: 5-15 Working Days',
-    to: '/forms/individual'
-  },
-  {
-    img: '/agro.png',
-    title: 'GOI Government Services',
-    desc: 'Apply for Kisan Samman Nidhi, PM Awas Yojana, or new LPG gas connection requests.',
-    items: ['Kisan Samman Nidhi', 'PM Awas Yojana', 'New LPG Gas Connection'],
-    timeline: 'Timeline: 10-20 Working Days',
-    to: '/forms/goi'
-  },
-  {
-    img: '/agri.png',
-    title: 'Agriculture & Electricity',
-    desc: 'Request agricultural electricity connections and register properties for farming support.',
-    items: ['Agri Electricity Connection', 'Farming Support Registration', 'Property Validation Documents'],
-    timeline: 'Timeline: 15-25 Working Days',
-    to: '/forms/agri'
-  },
-  {
-    img: '/legal.png',
-    title: 'Legal Documentation',
-    desc: 'Draft residential rent agreements, affidavits of proof, and power of attorney forms.',
-    items: ['Residential Rent Agreement', 'Power of Attorney (PoA)', 'Affidavits & Declarations'],
-    timeline: 'Timeline: 1-3 Working Days',
-    to: '/forms/legal'
-  }
-];
+
+
+const HeroDiscoveryPanel = ({ user }) => (
+  <div className="hero-discovery-card">
+    <div className="discovery-header">
+      <h4>Find Your Service</h4>
+    </div>
+    
+    <div className="discovery-body">
+      <div className="discovery-group">
+        <h5>Business Services</h5>
+        <div className="discovery-links">
+          <Link to={user ? '/forms/mca' : '/login'} className="discovery-item">&bull; Company Registration</Link>
+          <Link to={user ? '/forms/mca' : '/login'} className="discovery-item">&bull; LLP Registration</Link>
+          <Link to={user ? '/forms/msme' : '/login'} className="discovery-item">&bull; MSME Registration</Link>
+        </div>
+      </div>
+      
+      <div className="discovery-group">
+        <h5>Government Certificates</h5>
+        <div className="discovery-links">
+          <Link to={user ? '/forms/district' : '/login'} className="discovery-item">&bull; Income Certificate</Link>
+          <Link to={user ? '/forms/district' : '/login'} className="discovery-item">&bull; Domicile Certificate</Link>
+          <Link to={user ? '/forms/pension' : '/login'} className="discovery-item">&bull; Pension Services</Link>
+        </div>
+      </div>
+
+      <div className="discovery-group">
+        <h5>Documentation</h5>
+        <div className="discovery-links">
+          <Link to={user ? '/forms/student' : '/login'} className="discovery-item">&bull; Affidavits</Link>
+          <Link to={user ? '/forms/legal' : '/login'} className="discovery-item">&bull; Rent Agreements</Link>
+          <Link to={user ? '/forms/individual' : '/login'} className="discovery-item">&bull; PAN / Aadhaar Updates</Link>
+        </div>
+      </div>
+    </div>
+    
+    <div className="discovery-footer">
+      <a href="#services" className="btn btn-primary widget-cta">Browse Services</a>
+    </div>
+  </div>
+);
 
 const Home = () => {
   const { user } = useAuth();
@@ -136,173 +88,231 @@ const Home = () => {
         <section className="hero-section">
           <div className="container hero-container">
             <div className="hero-content">
-              <h1>Simplify Business Registrations and Government Services</h1>
+              <h1>Business Registrations & Government Services Made Simple</h1>
               <p>
-                Apply for registrations, compliance services, certificates, affidavits, 
-                and documentation through a streamlined digital process.
+                Apply online, upload documents securely, track progress, and receive expert assistance throughout the process.
               </p>
-              <div className="hero-actions">
-                <Link to={user ? '/dashboard' : '/login'} className="btn btn-primary">Get Started</Link>
-                <Link to={user ? '/track' : '/login'} className="btn btn-secondary">Track Application</Link>
+              <div className="hero-actions-container">
+                <div className="hero-actions">
+                  <Link to={user ? '/dashboard' : '/login'} className="btn btn-primary">Start New Application</Link>
+                  <Link to={user ? '/track' : '/login'} className="btn btn-secondary">Track Application</Link>
+                </div>
+                <div className="hero-trust-badges">
+                  <span><i className="bx bx-check"></i> Expert Guidance</span>
+                  <span><i className="bx bx-check"></i> Secure Documents</span>
+                  <span><i className="bx bx-check"></i> Application Tracking</span>
+                </div>
               </div>
             </div>
-          <div className="hero-visual">
-            <img src="/hero_illustration.png" alt="Business Registrations and Government Services Illustration" />
+            <div className="hero-visual">
+              <HeroDiscoveryPanel user={user} />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── Why Choose Smartdoors Section ── */}
-      <section className="why-choose-section">
-        <div className="container">
-          <div className="section-header">
-            <h2>Why Choose Smartdoors</h2>
-            <p>We provide a reliable, efficient, and fully secure digital environment for handling your business and government filings.</p>
-          </div>
-          <div className="why-choose-grid">
-            <div className="why-choose-card">
-              <div className="why-choose-icon">
-                <i className="bx bx-shield-quarter"></i>
-              </div>
-              <h3>Secure Document Handling</h3>
-              <p>Safe and encrypted storage to protect all your sensitive registration and certification documents.</p>
+        {/* ── Dedicated Trust Section ── */}
+        <section className="why-choose-section">
+          <div className="container">
+            <div className="section-header">
+              <h2>Why Users Trust Smartdoors</h2>
             </div>
-            
-            <div className="why-choose-card">
-              <div className="why-choose-icon">
-                <i className="bx bx-map-pin"></i>
+            <div className="why-choose-grid">
+              <div className="why-choose-card">
+                <div className="why-choose-icon">
+                  <i className="bx bx-lock-alt"></i>
+                </div>
+                <h3>Secure Document Handling</h3>
+                <p>Documents are stored and processed securely throughout the application lifecycle.</p>
               </div>
-              <h3>Application Tracking</h3>
-              <p>Real-time updates and milestone status tracking utilizing your unique Reference Number (ARN).</p>
-            </div>
-            
-            <div className="why-choose-card">
-              <div className="why-choose-icon">
-                <i className="bx bx-grid-alt"></i>
+              
+              <div className="why-choose-card">
+                <div className="why-choose-icon">
+                  <i className="bx bx-radar"></i>
+                </div>
+                <h3>Real-Time Application Tracking</h3>
+                <p>Track every application using a unique Application Reference Number (ARN).</p>
               </div>
-              <h3>Multiple Service Categories</h3>
-              <p>A comprehensive platform covering company registrations, compliance support, pensions, and affidavits.</p>
-            </div>
-            
-            <div className="why-choose-card">
-              <div className="why-choose-icon">
-                <i className="bx bx-user-check"></i>
+              
+              <div className="why-choose-card">
+                <div className="why-choose-icon">
+                  <i className="bx bx-user-check"></i>
+                </div>
+                <h3>Expert Review & Guidance</h3>
+                <p>Applications are reviewed before submission to minimize errors and delays.</p>
               </div>
-              <h3>Expert Guidance</h3>
-              <p>Assistance from certified application experts to ensure your filing details comply with regulations.</p>
-            </div>
-            
-            <div className="why-choose-card">
-              <div className="why-choose-icon">
-                <i className="bx bx-show-alt"></i>
+              
+              <div className="why-choose-card">
+                <div className="why-choose-icon">
+                  <i className="bx bx-support"></i>
+                </div>
+                <h3>Dedicated Support Assistance</h3>
+                <p>Get help with documentation, status updates, and filing requirements.</p>
               </div>
-              <h3>Transparent Process</h3>
-              <p>Clear tracking progress, upfront instructions, and direct support updates with no hidden processes.</p>
-            </div>
-            
-            <div className="why-choose-card">
-              <div className="why-choose-icon">
-                <i className="bx bx-help-circle"></i>
-              </div>
-              <h3>Dedicated Support</h3>
-              <p>Responsive ticket systems and helpdesk assistance to resolve your payment, refund, or filing queries.</p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── How It Works Section ── */}
-      <section className="how-it-works-section">
-        <div className="container">
-          <div className="section-header">
-            <h2>How It Works</h2>
-            <p>Our streamlined process ensures your business registrations and government filings are handled efficiently.</p>
-          </div>
-          <div className="process-flow">
-            <div className="process-step">
-              <div className="step-number">1</div>
-              <div className="step-content">
-                <h3>Select Service</h3>
-                <p>Browse our service catalog and choose the specific filing or registration you need.</p>
-              </div>
+        {/* ── Process Section ── */}
+        <section className="how-it-works-section">
+          <div className="container">
+            <div className="section-header">
+              <h2>Our Process</h2>
+              <p>A simple and transparent workflow for all your documentation and registration needs.</p>
             </div>
-            
-            <div className="process-step">
-              <div className="step-number">2</div>
-              <div className="step-content">
-                <h3>Submit Documents</h3>
-                <p>Complete the simplified application form and upload your documents securely.</p>
+            <div className="process-pipeline">
+              <div className="pipeline-step">
+                <div className="step-number">1</div>
+                <div className="step-content">
+                  <h3>Choose Service</h3>
+                  <p>Select the registration, certificate, or legal document service you need.</p>
+                </div>
               </div>
-            </div>
-            
-            <div className="process-step">
-              <div className="step-number">3</div>
-              <div className="step-content">
-                <h3>Verification</h3>
-                <p>Our expert team reviews your application details to ensure regulatory compliance.</p>
+              <div className="pipeline-step">
+                <div className="step-number">2</div>
+                <div className="step-content">
+                  <h3>Upload Documents</h3>
+                  <p>Fill out the forms and securely upload the required files on our portal.</p>
+                </div>
               </div>
-            </div>
-            
-            <div className="process-step">
-              <div className="step-number">4</div>
-              <div className="step-content">
-                <h3>Filing & Processing</h3>
-                <p>We prepare, verify, and submit your application to the appropriate government portal.</p>
+              <div className="pipeline-step">
+                <div className="step-number">3</div>
+                <div className="step-content">
+                  <h3>Verification</h3>
+                  <p>Our experts review everything to ensure zero filing errors or delays.</p>
+                </div>
               </div>
-            </div>
-            
-            <div className="process-step">
-              <div className="step-number">5</div>
-              <div className="step-content">
-                <h3>Track Status</h3>
-                <p>Monitor your application's real-time milestones using your unique Reference Number (ARN).</p>
+              <div className="pipeline-step">
+                <div className="step-number">4</div>
+                <div className="step-content">
+                  <h3>Track Application</h3>
+                  <p>Use your unique ARN to track the processing status in real-time.</p>
+                </div>
               </div>
-            </div>
-            
-            <div className="process-step">
-              <div className="step-number">6</div>
-              <div className="step-content">
-                <h3>Completion</h3>
-                <p>Receive your finalized registration certificates, affidavits, or approved documents digitally.</p>
+              <div className="pipeline-step">
+                <div className="step-number">5</div>
+                <div className="step-content">
+                  <h3>Completion</h3>
+                  <p>Receive your officially processed and verified documents digitally.</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* ── Redesigned Service Catalog Section ── */}
-      <section className="services-section">
+      <section id="services" className="services-section">
         <div className="container">
           <div className="section-header">
             <h2>Our Core Services</h2>
             <p>Select a category below to start your application with expert guidance.</p>
           </div>
           
-          <div className="services-grid">
-            {services.map(({ img, title, desc, items, timeline, to }) => (
-              <div className="service-card" key={title}>
-                <div className="service-card-body">
-                  <div className="service-icon-wrapper">
-                    <img src={img} alt={title} />
-                  </div>
-                  <h3>{title}</h3>
-                  <p className="service-desc">{desc}</p>
-                  <ul className="service-key-list">
-                    {items.map((item) => (
-                      <li key={item}>
-                        <i className="bx bx-check-circle"></i> {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="service-card-footer">
-                  <span className="service-timeline">
-                    <i className="bx bx-time-five"></i> {timeline}
-                  </span>
-                  <Link to={to} className="service-card-link">Apply Now &rarr;</Link>
+          <div className="services-category-grid">
+            <div className="service-category-panel">
+              <div className="category-panel-header">
+                <i className="bx bx-briefcase-alt-2"></i>
+                <div>
+                  <h3>Business Services</h3>
+                  <p>Incorporate entities, secure licensing, and manage commercial taxes.</p>
                 </div>
               </div>
-            ))}
+              <ul className="category-service-list">
+                <li>
+                  <Link to={user ? '/forms/mca' : '/login'}>
+                    <span>Company Registration</span>
+                    <span className="service-meta">⏱ Estimated Processing Time: 3-7 Working Days</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to={user ? '/forms/msme' : '/login'}>
+                    <span>MSME &amp; Business Licensing</span>
+                    <span className="service-meta">⏱ Estimated Processing Time: 2-4 Working Days</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to={user ? '/forms/roc' : '/login'}>
+                    <span>ROC Compliance Filing</span>
+                    <span className="service-meta">⏱ Estimated Processing Time: 5-10 Working Days</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to={user ? '/forms/accounting' : '/login'}>
+                    <span>Accounting &amp; Tax (GST/ITR)</span>
+                    <span className="service-meta">⏱ Estimated Processing Time: 3-5 Working Days</span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="service-category-panel">
+              <div className="category-panel-header">
+                <i className="bx bx-building"></i>
+                <div>
+                  <h3>Government Services</h3>
+                  <p>Apply for verified state certificates, pensions, and public schemes.</p>
+                </div>
+              </div>
+              <ul className="category-service-list">
+                <li>
+                  <Link to={user ? '/forms/district' : '/login'}>
+                    <span>E-District Certificates</span>
+                    <span className="service-meta">⏱ Estimated Processing Time: 7-15 Working Days</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to={user ? '/forms/pension' : '/login'}>
+                    <span>Pension Schemes (Old Age/Widow)</span>
+                    <span className="service-meta">⏱ Estimated Processing Time: 15-30 Working Days</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to={user ? '/forms/goi' : '/login'}>
+                    <span>GOI Government Services</span>
+                    <span className="service-meta">⏱ Estimated Processing Time: 10-20 Working Days</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to={user ? '/forms/agri' : '/login'}>
+                    <span>Agriculture &amp; Electricity Connection</span>
+                    <span className="service-meta">⏱ Estimated Processing Time: 15-25 Working Days</span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="service-category-panel">
+              <div className="category-panel-header">
+                <i className="bx bx-file"></i>
+                <div>
+                  <h3>Documentation Services</h3>
+                  <p>Draft legal agreements, support affidavits, and update credentials.</p>
+                </div>
+              </div>
+              <ul className="category-service-list">
+                <li>
+                  <Link to={user ? '/forms/legal' : '/login'}>
+                    <span>Rent Agreements &amp; Power of Attorney</span>
+                    <span className="service-meta">⏱ Estimated Processing Time: 1-3 Working Days</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to={user ? '/forms/student' : '/login'}>
+                    <span>Student Affidavits &amp; GAP Certificates</span>
+                    <span className="service-meta">⏱ Estimated Processing Time: 1-3 Working Days</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to={user ? '/forms/individual' : '/login'}>
+                    <span>PAN &amp; Aadhaar (E-KYC Updates)</span>
+                    <span className="service-meta">⏱ Estimated Processing Time: 5-15 Working Days</span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="services-note">
+            <p><i className="bx bx-info-circle"></i> Estimated timelines may vary depending on document verification requirements and government processing times.</p>
           </div>
         </div>
       </section>
@@ -337,11 +347,11 @@ const Home = () => {
       <section className="contact-cta-section">
         <div className="container">
           <div className="cta-box">
-            <h2>Need Assistance with Your Filing?</h2>
-            <p>Our support specialists are here to guide you through document requirements, status updates, or payment inquiries.</p>
+            <h2>Need Help With Registration?</h2>
+            <p>Talk to our experts and receive guidance for business registration, compliance, certifications, and government services.</p>
             <div className="cta-actions">
-              <Link to={user ? '/dashboard' : '/login'} className="btn btn-primary">Start an Application</Link>
-              <Link to={user ? '/raise' : '/login'} className="btn btn-secondary">Open Support Ticket</Link>
+              <Link to={user ? '/dashboard' : '/login'} className="btn btn-primary">Start Application</Link>
+              <Link to={user ? '/raise' : '/login'} className="btn btn-secondary">Contact Support</Link>
             </div>
           </div>
         </div>

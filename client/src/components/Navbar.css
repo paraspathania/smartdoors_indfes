@@ -131,7 +131,7 @@
   list-style: none;
 }
 
-.menuc ul li a, .menuc ul li span {
+.menuc ul li, .menuc ul li a, .menuc ul li span {
   font-size: 14px;
   font-weight: 500;
   color: var(--text-secondary);
@@ -141,8 +141,18 @@
   transition: color 0.15s ease;
 }
 
-.menuc ul li a:hover, .menuc ul li span:hover {
+.menuc ul li:hover, .menuc ul li a:hover, .menuc ul li span:hover {
   color: var(--text-primary);
+}
+
+.menuc ul li i, .menuc ul li a i {
+  color: var(--color-primary);
+  font-size: 16px;
+  transition: color 0.15s ease;
+}
+
+.menuc ul li:hover i, .menuc ul li a:hover i {
+  color: var(--color-primary-hover);
 }
 
 /* Mobile Nav Bar Styles */
@@ -174,20 +184,24 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 .mobilenav li a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 11px;
   color: var(--text-secondary);
   font-weight: 500;
 }
 
-.mobilenav li a i {
+.mobilenav li a i,
+.mobilenav li i {
   font-size: 18px;
   margin-bottom: var(--space-1);
+  color: var(--color-primary);
 }
 
 /* Page Body padding-top alignment */
