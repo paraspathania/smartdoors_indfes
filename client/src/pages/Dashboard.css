@@ -1,0 +1,5 @@
+.dash-content { height: auto; min-height: 400px; }
+.dash-content li#option { height: 220px; }
+@media screen and (min-width: 1140px) { .dash-content { height: 1400px; } }
+@media screen and (min-width: 1248px) { .dash-content { height: 1000px; } }
+@media screen and (min-width: 1920px) { .dash-content { height: 1500px; } }

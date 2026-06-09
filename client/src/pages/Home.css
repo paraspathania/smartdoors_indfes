@@ -1,0 +1,64 @@
+/* Shared page body offset for fixed navbar */
+.page-body { padding-top: 73px; }
+
+/* Content area with service tiles */
+.contentarea { background-color: #d9d9d9; height: 350px; padding: 25px; }
+.contentarea ul { padding: 0; margin: 0; }
+li#option { display: inline-block; }
+
+img#sour { border-radius: 250px; height: 200px; width: 200px; }
+
+.flexbanner { margin-top: 3px; }
+
+@media screen and (min-width: 320px) {
+  .page-body { padding-top: 93px; }
+  .contentarea { height: 480px; margin-top: 2px; }
+  img#sour { height: 120px; width: 120px; }
+  li#option { width: 50%; float: left; padding-left: 22px; padding-top: 3%; }
+}
+@media screen and (min-width: 390px) {
+  .contentarea { height: 350px; }
+  li#option { width: 33%; float: left; padding-left: 5px; padding-top: 3%; }
+}
+@media screen and (min-width: 425px) {
+  .contentarea { height: 350px; }
+  li#option { width: 33%; float: left; padding-left: 16px; padding-top: 3%; }
+}
+@media screen and (min-width: 768px) {
+  .contentarea { height: 550px; }
+  img#sour { height: 200px; width: 200px; }
+  li#option { width: 33%; float: left; padding-left: 3%; padding-top: 3%; }
+}
+@media screen and (min-width: 1024px) {
+  .contentarea { height: 300px; }
+  li#option { width: 17%; float: left; margin-left: 2.5%; padding-top: 0; }
+  img#sour { height: 170px; width: 170px; }
+}
+@media screen and (min-width: 1140px) {
+  .page-body { padding-top: 112px; }
+  .flexbanner { margin-top: 112px; }
+  .contentarea { height: 350px; margin-top: 3px; padding: 25px; }
+  li#option { width: 18%; float: left; margin-left: 1%; }
+  img#sour { height: 200px; width: 200px; }
+}
+@media screen and (min-width: 1248px) {
+  li#option { width: 17%; float: left; margin-left: 2%; }
+}
+@media screen and (min-width: 1420px) {
+  .contentarea { height: 400px; }
+  li#option { width: 16%; float: left; margin-left: 3%; height: 250px; }
+  img#sour { height: 250px; width: 250px; }
+}
+@media screen and (min-width: 1920px) {
+  .page-body { padding-top: 167px; }
+  .flexbanner { margin-top: 167px; }
+  .contentarea { height: 500px; }
+  li#option { width: 20%; margin-left: 0; margin-top: 3%; }
+  img#sour { height: 350px; width: 350px; }
+}
+@media screen and (min-width: 2560px) {
+  .page-body { padding-top: 187px; }
+  .flexbanner { margin-top: 187px; }
+  .contentarea { padding-left: 200px; }
+  li#option { width: 20%; }
+}
